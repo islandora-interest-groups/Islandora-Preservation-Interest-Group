@@ -73,4 +73,5 @@
 * Becky Yoose (Grinnell College Libraries)
 * Ernie Gillis (Berklee College of Music Archives)
 * Sofia Becerra-Licha (Berklee College of Music Archives)
-
+* Gloria Gonzalez (UCLA)
+* Stephen Davison (UCLA)
