@@ -75,3 +75,4 @@
 * Sofia Becerra-Licha (Berklee College of Music Archives)
 * Gloria Gonzalez (UCLA)
 * Stephen Davison (UCLA)
+* Jane Monson (University of Northern Colorado)
