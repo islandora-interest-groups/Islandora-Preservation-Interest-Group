@@ -76,3 +76,4 @@
 * Gloria Gonzalez (UCLA)
 * Stephen Davison (UCLA)
 * Jane Monson (University of Northern Colorado)
+* Andrew Berger (Computer History Museum)
