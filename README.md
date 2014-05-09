@@ -78,3 +78,4 @@
 * Jane Monson (University of Northern Colorado)
 * Andrew Berger (Computer History Museum)
 * Caleb Derven (University of Limerick)
+* Kilian Amrhein (Zuse Institute Berlin)
