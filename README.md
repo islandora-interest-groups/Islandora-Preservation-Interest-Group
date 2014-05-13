@@ -79,3 +79,4 @@
 * Andrew Berger (Computer History Museum)
 * Caleb Derven (University of Limerick)
 * Kilian Amrhein (Zuse Institute Berlin)
+* [James R. Griffin III](jrgriffiniii) (Lafayette College Libraries)
