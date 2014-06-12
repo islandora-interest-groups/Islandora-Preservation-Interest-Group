@@ -56,10 +56,10 @@
 
 ## Membership
 
-* Mark Jordan (SFU)
-* Nick Ruest (YU)
+* Mark Jordan (Simon Fraser University)
+* [Nick Ruest](https://github.com/ruebot) (York University)
 * Donald Moses (UPEI)
-* Melissa Anez (IF)
+* Melissa Anez (Islandora Foundation)
 * Mark Leggott (UPEI)
 * Robin Dean (Colorado Alliance of Research Libraries)
 * Ryan Gjerde (Luther College)
@@ -82,3 +82,4 @@
 * [Eric Luhrs](https://github.com/eluhrs) (Lafayette College Libraries)
 * [James R. Griffin III](https://github.com/jrgriffiniii) (Lafayette College Libraries)
 * [Thomas Goodnow](https://github.com/goodnowt) (Lafayette College Libraries)
+* [Alex Garnet](https://github.com/axfelix) (Simon Fraser University)
