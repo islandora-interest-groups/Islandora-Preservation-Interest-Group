@@ -83,3 +83,4 @@
 * [James R. Griffin III](https://github.com/jrgriffiniii) (Lafayette College Libraries)
 * [Thomas Goodnow](https://github.com/goodnowt) (Lafayette College Libraries)
 * [Alex Garnet](https://github.com/axfelix) (Simon Fraser University)
+* Angela Dappert (Digital Preservation Coalition)
