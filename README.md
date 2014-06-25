@@ -84,3 +84,4 @@
 * [Thomas Goodnow](https://github.com/goodnowt) (Lafayette College Libraries)
 * [Alex Garnet](https://github.com/axfelix) (Simon Fraser University)
 * Angela Dappert (Digital Preservation Coalition)
+* Courtney Mumma (Artefactual)
