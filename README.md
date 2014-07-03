@@ -61,7 +61,6 @@
 * Donald Moses (UPEI)
 * Melissa Anez (Islandora Foundation)
 * Mark Leggott (UPEI)
-* Robin Dean (Colorado Alliance of Research Libraries)
 * Ryan Gjerde (Luther College)
 * Nathan Books (Northern Illinois University)
 * Aaron Collie (Michigan State University)
