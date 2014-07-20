@@ -1,4 +1,5 @@
 # Islandora Background Processes Discussion Paper
+Mark Jordan
 
 ## Overview and purpose of this document
 
@@ -28,7 +29,7 @@ While hard-coding external programs to create derivatives reduces Islandora’s 
 
 Combined, the “single process” approach to creating derivatives, and the tight binding of those external programs and their parameters with solution pack code, can lead to scalability problems when ingesting large quantities of content, to difficulties in integrating Islandora into local content production, management, and preservation workflows, and to the introduction of local workarounds to compensate for unwanted functionality.
 
-A Drupal contrib module, [Background Process](https://www.drupal.org/project/background_process),  provides a simple API for running tasks as independent processes. The module also integrates with the Drupal Cron and Queue subsystems, and provides a listing of running processes it manages (https://www.drupal.org/files/project-images/Screen%20Shot%202012-10-21%20at%2011.39.11%20AM.png). In the remainder of this document, I will describe how this module can be used as the basis for the generalized services framework mentioned in the overview. 
+A Drupal contrib module, [Background Process](https://www.drupal.org/project/background_process),  provides a simple API for running tasks as independent processes. The module also integrates with the Drupal Cron and Queue subsystems, and provides a listing of running processes it manages ([screenshot](https://www.drupal.org/files/project-images/Screen%20Shot%202012-10-21%20at%2011.39.11%20AM.png)). In the remainder of this document, I will describe how this module can be used as the basis for the generalized services framework mentioned in the overview. 
 
 ## Microservices
 
