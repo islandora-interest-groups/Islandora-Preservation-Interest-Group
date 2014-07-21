@@ -1,5 +1,5 @@
 # Islandora Background Processes Discussion Paper
-Mark Jordan
+Mark Jordan, July 21, 2014
 
 ## Overview and purpose of this document
 
@@ -72,7 +72,7 @@ The second, and perhaps more important, benefit is that external services become
 
 An important consequence of using asynchronous processes to create derivatives is that a derivative can take considerably longer to create (and add to its parent object) than the submission of the ingest form. This is acceptable for derivatives that are not shown to the user by default at the end of the ingest form submission process. However, datastreams that are shown to the end user at the end of ingest form submission (there are many examples, including the ‘PREVIEW’ datastream in the PDF Content Model, the ‘JPG’ datastream in the Web ARChive Content Model) may not be created or added to the parent object by the time that the form submission completes. The behavior of the object display in this situation varies across solution packs and also across viewers configured for use with specific content models. It is possible to check for the existence of the derivative when the object is viewed but a suitable generalized way to respond to a not-yet-ready datastream needs to be investigated.
 
-## Integration into existing Islandora solution packs and possible adoption by other repository platforms
+## Integration into existing Islandora solution packs and intersection with other repository platforms
 
 As described earlier, standard Islandora solution packs implement either hook_islandora_derivative() or hook_CMODEL_PID_islandora_derivative(), and then add the newly created datastream to its parent object. This behavior is typically hard coded into solution packs. The only solution pack that currently provides a configuration option to not create derivatives using its own code is the Newspaper Solution Pack, which assumes that externally created derivatives are created by UPEI’s or Discovery Gardens’ microservices.
 
