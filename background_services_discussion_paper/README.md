@@ -11,7 +11,7 @@ The purpose of the document is to encourage discussion around how the Islandora 
 
 ## Derivative creation in Islandora
 
-Islandora solution packs typically create derivatives from the OBJ datastream as it is uploaded by the user in the target collection’s ingest form. Uploading of the user’s file, creating the derivatives, and submitting the ingest form are performed in sequence. Solution packs create derivatives by implementing either hook_islandora_derivative() or hook_CMODEL_PID_islandora_derivative(), both of which define some metadata about the derivative and then call a solution-pack-specific function that in turn calls an external program (usually through PHP’s exec() function) to create the derivative file. For example, the Audio Solution Pack calls the LAME utility to generate MP3 files using the following PHP code:
+Islandora solution packs typically create derivatives from the OBJ datastream as it is uploaded by the user in the target collection’s ingest form. Uploading of the user’s file, creating the derivatives, and submitting the ingest form are performed in sequence. Solution packs create derivatives by implementing either `hook_islandora_derivative()` or `hook_CMODEL_PID_islandora_derivative()`, both of which define some metadata about the derivative and then call a solution-pack-specific function that in turn calls an external program (usually through PHP’s exec() function) to create the derivative file. For example, the Audio Solution Pack calls the LAME utility to generate MP3 files using the following PHP code:
 
 ```php
  $command = "$lame_url -V5 --vbr-new \"$file\" \"$outfile\"";
@@ -49,14 +49,14 @@ The OCR REST server is not specific to Islandora or Drupal; it is fully complian
 
 The generic framework module, called [Islandora Background Process](https://github.com/mjordan/islandora_background_process), implements the following standard Islanodra hooks: 
 
-* hook_islandora_object_ingested
-* hook_islandora_object_modified
-* hook_islandora_object_alter
-* hook_islandora_datastream_ingested
-* hook_islandora_datastream_modified, and
-* hook_islandora_datastream_alter
+* `hook_islandora_object_ingested`
+* `hook_islandora_object_modified`
+* `hook_islandora_object_alter`
+* `hook_islandora_datastream_ingested`
+* `hook_islandora_datastream_modified`, and
+* `hook_islandora_datastream_alter`
 
-Code within the module’s hook functions inspects all of the objects that extend an abstract IslandoraBackgroundProcess class (provided by the Islandora Background Process module) and detects which objects are to be passed off to the Background Process module within each hook for creation of a new process. The hook then invokes the extending object’s work() method, passing in either an Islandora $object or an Islandora $object and $datastream as parameters, depending on the hook it is invoked from. The purpose of the abstract IslandoraBackgroundProcess class is to define predictable properties and a method that all child objects implement, and also to provide a mechanism for efficient object introspection within the Islandora hooks listed above.
+Code within the module’s hook functions inspects all of the objects that extend an abstract IslandoraBackgroundProcess class (provided by the Islandora Background Process module) and detects which objects are to be passed off to the Background Process module within each hook for creation of a new process. The hook then invokes the extending object’s work() method, passing in either an Islandora `$object` or an Islandora `$object` and `$datastream` as parameters, depending on the hook it is invoked from. The purpose of the abstract IslandoraBackgroundProcess class is to define predictable properties and a method that all child objects implement, and also to provide a mechanism for efficient object introspection within the Islandora hooks listed above.
 
 The third component (the [“Islandora Background Process OCR Service” module](https://github.com/mjordan/islandora_bprocess_ocr)), is the Islandora module that enables local site adminstrators to configure Islandora’s interaction with the remote REST service and that also integrates the REST OCR service into the generic Islandora Background Process framework by instantiating an object that extends IslandoraBackgroundProcess. The work() method within this object contains the code that calls the REST service and then, after the OCR transcripts have been generated, adds the transcripts to the appropriate Islandora object. Below is a diagram illustrating how the components work together: 
 
@@ -74,7 +74,7 @@ An important consequence of using asynchronous processes to create derivatives i
 
 ## Integration into existing Islandora solution packs and intersection with other repository platforms
 
-As described earlier, standard Islandora solution packs implement either hook_islandora_derivative() or hook_CMODEL_PID_islandora_derivative(), and then add the newly created datastream to its parent object. This behavior is typically hard coded into solution packs. The only solution pack that currently provides a configuration option to not create derivatives using its own code is the Newspaper Solution Pack, which assumes that externally created derivatives are created by UPEI’s or Discovery Gardens’ microservices.
+As described earlier, standard Islandora solution packs implement either `hook_islandora_derivative()` or `hook_CMODEL_PID_islandora_derivative()`, and then add the newly created datastream to its parent object. This behavior is typically hard coded into solution packs. The only solution pack that currently provides a configuration option to not create derivatives using its own code is the Newspaper Solution Pack, which assumes that externally created derivatives are created by UPEI’s or Discovery Gardens’ microservices.
 
 Ideally, integrating the external services framework described here with existing solution packs would require a minimal amount of code-level changes to the solution packs yet provide graceful fallbacks to their built-in functionality. The simplest integration would require that solution packs provide a simple configuration option to turn off their built-in derivative creation, as the [Newspaper Solution Pack](https://github.com/Islandora/islandora_solution_pack_newspaper) currently does:
 
@@ -82,7 +82,7 @@ Ideally, integrating the external services framework described here with existin
 
 Adding this option to other solution packs would allow the approach described in this document to work, and maintain compatibility with other approaches to using external services such as UPEI’s and Discovery Gardens’ microservices.
 
-However, additional ways of integrating with existing solution packs exist. For example, a more complex approach would be to create a registry of content models and collections that are configured to use specific external services, similar to Drupal’s class and theme registries, and from within existing solution packs’ implementations of _derivative() hooks, compare the incoming Islandora object and its datastreams with this registry. If there is a match, the external service is used; if there is no match, the solution pack’s derivative-creation functions are used. The Islandora Background Process module could provide the function that checks the registry; existing solution packs would only need to add a call to that function and logic to bypass their built-in derivative-creation functions.
+However, additional ways of integrating with existing solution packs exist. For example, a more complex approach would be to create a registry of content models and collections that are configured to use specific external services, similar to Drupal’s class and theme registries, and from within existing solution packs’ implementations of `_derivative()` hooks, compare the incoming Islandora object and its datastreams with this registry. If there is a match, the external service is used; if there is no match, the solution pack’s derivative-creation functions are used. The Islandora Background Process module could provide the function that checks the registry; existing solution packs would only need to add a call to that function and logic to bypass their built-in derivative-creation functions.
 
 The Islandora Background Process module and the Islandora Background Process OCR Service module used in the sample implementation are specific to Islandora, but the OCR REST server is agnostic to clients other than requiring that they be able to issue specific REST requests over HTTP (although the server does make some assumptions about the formats of images it receives and the types of transcripts it generates). One of the greatest advantages of allowing Islandora to use external services via a flexible, low-configuration framework is promoting shared services accross Islandora instances and across repository platforms. Developing and deploying effective external services, especially ones that can be used by any repository platform the way that REST or web services can, benefits the entire repository community.
 
