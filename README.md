@@ -56,7 +56,7 @@
 
 ## Membership
 
-* Mark Jordan (Simon Fraser University)
+* [Mark Jordan](https://github.com/mjordan) (Simon Fraser University)
 * [Nick Ruest](https://github.com/ruebot) (York University)
 * Donald Moses (UPEI)
 * Melissa Anez (Islandora Foundation)
