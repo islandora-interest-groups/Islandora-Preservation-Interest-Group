@@ -84,3 +84,4 @@
 * [Alex Garnet](https://github.com/axfelix) (Simon Fraser University)
 * Angela Dappert (Digital Preservation Coalition)
 * Courtney Mumma (Artefactual)
+* [Brad Spry](bradspry) (UNC Charlotte)
