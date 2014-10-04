@@ -85,3 +85,4 @@
 * Angela Dappert (Digital Preservation Coalition)
 * Courtney Mumma (Artefactual)
 * [Brad Spry](bradspry) (UNC Charlotte)
+* Felicity Dykas (University of Missouri)
