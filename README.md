@@ -86,3 +86,4 @@
 * Courtney Mumma (Artefactual)
 * [Brad Spry](bradspry) (UNC Charlotte)
 * Felicity Dykas (University of Missouri)
+* Lydia Motyka (Florida Virtual Campus)
