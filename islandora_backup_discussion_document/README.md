@@ -7,7 +7,7 @@ These activities<sup>1</sup> typically include:
      * archival formats
      * normalization
      * format migration
-     * _bitstream copying_
+     * **bitstream copying**
      * fixity checking
      * documentation of file formats
 
