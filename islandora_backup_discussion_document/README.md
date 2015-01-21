@@ -11,7 +11,7 @@ These activities<sup>1</sup> typically include:
      * fixity checking
      * documentation of file formats
 
-This proposal is an attempt to provide a discussion starter about an offsite/offline bitstream copying strategy related to digital objects within the Islandora context and isn't intended to replace a standard/full system backup plan. 
+This proposal is an attempt to provide a discussion starter about an **offsite/offline bitstream copying strategy** related to digital objects within the Islandora context and isn't intended to replace a standard/full system backup plan. 
 
 ## Backup Plan
 
@@ -35,17 +35,18 @@ One of the key features we are missing in our current backup plan is remote stor
 ### Proposed Use Cases
 
 **Backup Use Cases**
+* an automated process or workflow that is configurable (eg. what objects, when, frequency) 
 * an islandora admin/repository manager is able to back up their Islandora site (Drupal filesystem, Drupal database, Fedora digital objects)
 * a islandora admin/repository manager is able to back up selected portions of their Islandora site (eg. just the Drupal filesystem, and/or the database, and/or the Fedora objects)
 * an islandora admin/repository manager can schedule backups
 * an islandora admin/repository manager can manually initiate a backup
-* aislandora admin/repository manager is able to direct their backup to a multiple destinations. For example:
+* an islandora admin/repository manager is able to direct their backup to a multiple destinations. For example:
  * the same filesystem
  * a local network filesystem
  * a cloud service
 * the application can leverage multiple methods for transferring backups. For example:
  * FTP
- * SFTP
+ * SFTP / SCP
  * RSync
  * BitTorrent
  * Swift
@@ -64,6 +65,7 @@ One of the key features we are missing in our current backup plan is remote stor
 
 ** Report Use Cases**
 
+* an authorized user can view the 'state' of a backup procedure.
 * an authorized user can review the list of backups performed.
 * an authorized user can compare the checksum of a backed up item with the checksum originally recorded.
 
@@ -105,12 +107,14 @@ When you combine the functionality of the [Backup and Migrate](https://www.drupa
 * plugin_object_foxml
 * plugin_object_premis
 
-When utilizing [Islandora Bagit](https://github.com/islandora/islandora_bagit) users can configure where their bags are stored (eg. sites/default/files/bags) which makes them accessible to the [Backup and Migrate](https://www.drupal.org/project/backup_migrate) module.
+When utilizing [Islandora Bagit](https://github.com/islandora/islandora_bagit) users can configure where their bags are stored (eg. sites/default/files/bags) which makes them accessible to the [Backup and Migrate](https://www.drupal.org/project/backup_migrate) module.  A disadvantage to this approach is that we'd be potentially filling up the drupal filesystem and overloading the server (in our infrastructure we have separate fedora/drupal servers) and copying content that could otherwise be streamed from the Fedora server directly to your external storage (timing to copy/move etc.).
 
-To get a proof of concept pulled together I think there are two use cases we can investigate:
+To get a proof of concept pulled together use cases we can investigate include:
 
 * individual object packaged as a Bag backed up to a service like Amazon S3 (in theory the current set of modules/functionality should support this)
 * serialized objects (eg. an Islandora collection) stored in a single Bag backed up to Amazon Glacier.
+* install durasync on a test fedora server and install a local version of duracloud
+    * durasync would push to duracloud (S3) 
 
 **FOXML BagIt Approach**
 
@@ -119,8 +123,8 @@ As a starting point we may want to consider limiting our BagIt configuration to 
 * potential issues
   * the checksums used in the Bag are SHA1, while the Islandora default is MD5 (though SHA1 is an option).
   * the checksum in the Bag is applied to the FOXML file itself, not the individual datastreams
-  * there currently isn't a restore for FOXML files, though [Tuque supports the creation of objects based on FOXML](https://github.com/Islandora/tuque/blob/1.x/FedoraApi.php#L1057-L1141).
-  * What happens on restore? I think this is potentially snarly.
+  * What happens on restore/reingest? I think this is potentially snarly.
+  * There would be a fair amount of work/code to capture what was backed up, when it was backed up, reports, where it was backed up too, etc.
 
 **Individual Datastreams Approach**
 
@@ -131,6 +135,19 @@ This approach will require additional thought.  The potential benefits of this a
 * complicates the restore process. Would we need to embed the associated Islandora CModel as part of the bag? Would we bag up objects based on their content models? eg. use a directory structure to separate those out? Additional layers of admin screens would be needed.
 * the B&M module provides a note field for the backup ... would we insert cmodel details there?
 
+**DuraSync/DuraCloud Approach**
+
+Potential benefits of this approach include:
+
+* content is streamed directly from Fedora eliminating a number of failure points
+* software already exists and is used within the community.
+* provides checksumming
+* pushes to S3/RackSpace
+* some basic reporting provided
+* tools for retrieval / restore
+* size is handled by DuraCloud (eg. built in chunking/stitching)
+* from our prospective this would probably be the quickest method of getting our digital objects stored offsite.
+
 **Issues and Further Discussion**
 * what is reasonable re: size of backup? Would it need to be chunked / optomized in some way ... how do we accommodate a backup that may take days?
 * we don't accommodate backup of the application stack in the proposal
@@ -140,7 +157,5 @@ This approach will require additional thought.  The potential benefits of this a
 * what is the frequency of backups?
 * what are the cost factors for an S3 / Glacier implementation?
 * the restore piece is thin and needs further thought
-
-
 
 1. [Scholar's Portal Preservation Implementation Plan](https://spotdocs.scholarsportal.info/display/OAIS/Preservation+Implementation+Plan)
