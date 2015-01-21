@@ -1,6 +1,6 @@
-# Report of the External Services Working Group, part of the Islandora Preservation Interest Group
+# Report of the External Services Working Group
 
-Ed Fugikawa, Mark Jordan, Danny Lamb, Mark Leggott, Paul Pound, Nick Ruest
+Prepared by Ed Fugikawa, Mark Jordan, Danny Lamb, Mark Leggott, Paul Pound, Nick Ruest on behalf of the Islandora Preservation Interest Group
 
 December 4, 2014
 
