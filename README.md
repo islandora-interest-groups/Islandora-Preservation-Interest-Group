@@ -5,6 +5,7 @@
 * Donald Moses (UPEI)
 * Nick Ruest (York)
 * Mark Jordan (SFU)
+* Alex Kent (PALS)
 
 ## Terms of Reference
 
