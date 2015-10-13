@@ -88,3 +88,4 @@
 * [Brad Spry](bradspry) (UNC Charlotte)
 * Felicity Dykas (University of Missouri)
 * Lydia Motyka (Florida Virtual Campus)
+* [Marcus Emmanuel Barnes] (https://github.com/MarcusBarnes) (Simon Fraser University)
