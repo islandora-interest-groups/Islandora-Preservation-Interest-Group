@@ -1,4 +1,4 @@
-** This Interest Group is currently on hiatus. If you are interested in reviving it, please contact community@islandora.ca**
+**This Interest Group is currently on hiatus. If you are interested in reviving it, please contact community@islandora.ca**
 
 # Islandora Preservation Interest Group
 
